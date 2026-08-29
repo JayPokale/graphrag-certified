@@ -1,0 +1,6 @@
+# pinned to the versions the committed results.json files were produced with
+numpy==2.2.6
+scipy==1.15.3
+networkx==3.5.4
+pandapower==3.4.2      # RD2/E19b only: ships the real PEGASE topologies offline
+matplotlib==3.10.7     # figures only

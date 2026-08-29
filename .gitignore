@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+
+# not part of this artifact
+paper/
+findings/
+figures/
+theorems.tex
+papers.md
+GraphRAG_Mathematical_Proofs_and_Experiments.md
+GraphRAG_Mathematical_Proofs_and_Experiments_Updated_main2.md
+
+# LaTeX intermediates
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+.DS_Store
