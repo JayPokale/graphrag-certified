@@ -1,0 +1,94 @@
+{
+  "3": {
+    "3": {
+      "a": 1,
+      "ref_w_pow_a": 3,
+      "ball": 5.0,
+      "uniform": 6.5,
+      "ppr": 4.8,
+      "bippr": 5.05,
+      "uniform_over_ref": 2.1666666666666665,
+      "ppr_over_ref": 1.5999999999999999,
+      "bippr_over_ref": 1.6833333333333333
+    },
+    "5": {
+      "a": 2,
+      "ref_w_pow_a": 9,
+      "ball": 15.0,
+      "uniform": 10.85,
+      "ppr": 37.75,
+      "bippr": 14.7,
+      "uniform_over_ref": 1.2055555555555555,
+      "ppr_over_ref": 4.194444444444445,
+      "bippr_over_ref": 1.6333333333333333
+    },
+    "7": {
+      "a": 3,
+      "ref_w_pow_a": 27,
+      "ball": 43.0,
+      "uniform": 49.35,
+      "ppr": 83.55,
+      "bippr": 53.15,
+      "uniform_over_ref": 1.8277777777777777,
+      "ppr_over_ref": 3.0944444444444446,
+      "bippr_over_ref": 1.9685185185185186
+    },
+    "9": {
+      "a": 4,
+      "ref_w_pow_a": 81,
+      "ball": 125.0,
+      "uniform": 119.95,
+      "ppr": 655.6,
+      "bippr": 305.6,
+      "uniform_over_ref": 1.4808641975308643,
+      "ppr_over_ref": 8.093827160493827,
+      "bippr_over_ref": 3.77283950617284
+    }
+  },
+  "4": {
+    "3": {
+      "a": 1,
+      "ref_w_pow_a": 4,
+      "ball": 6.0,
+      "uniform": 7.3,
+      "ppr": 4.5,
+      "bippr": 6.25,
+      "uniform_over_ref": 1.825,
+      "ppr_over_ref": 1.125,
+      "bippr_over_ref": 1.5625
+    },
+    "5": {
+      "a": 2,
+      "ref_w_pow_a": 16,
+      "ball": 23.0,
+      "uniform": 24.0,
+      "ppr": 28.2,
+      "bippr": 19.4,
+      "uniform_over_ref": 1.5,
+      "ppr_over_ref": 1.7625,
+      "bippr_over_ref": 1.2125
+    },
+    "7": {
+      "a": 3,
+      "ref_w_pow_a": 64,
+      "ball": 88.0,
+      "uniform": 89.75,
+      "ppr": 243.2,
+      "bippr": 139.65,
+      "uniform_over_ref": 1.40234375,
+      "ppr_over_ref": 3.8,
+      "bippr_over_ref": 2.18203125
+    },
+    "9": {
+      "a": 4,
+      "ref_w_pow_a": 256,
+      "ball": 345.0,
+      "uniform": 386.95,
+      "ppr": 2029.25,
+      "bippr": 1411.2,
+      "uniform_over_ref": 1.5115234375,
+      "ppr_over_ref": 7.9267578125,
+      "bippr_over_ref": 5.5125
+    }
+  }
+}
