@@ -1,0 +1,394 @@
+{
+  "seed": 20260901,
+  "E28_observed_amplification": {
+    "rows": [
+      {
+        "query": "chain-2",
+        "K": 64,
+        "tau_star": 1.0,
+        "rho_obs_max": 1,
+        "rho_bound": 1,
+        "ratio": 1.0
+      },
+      {
+        "query": "chain-2",
+        "K": 256,
+        "tau_star": 1.0,
+        "rho_obs_max": 1,
+        "rho_bound": 1,
+        "ratio": 1.0
+      },
+      {
+        "query": "chain-2",
+        "K": 1024,
+        "tau_star": 1.0,
+        "rho_obs_max": 1,
+        "rho_bound": 1,
+        "ratio": 1.0
+      },
+      {
+        "query": "chain-3",
+        "K": 64,
+        "tau_star": 2.0,
+        "rho_obs_max": 8,
+        "rho_bound": 8,
+        "ratio": 1.0
+      },
+      {
+        "query": "chain-3",
+        "K": 256,
+        "tau_star": 2.0,
+        "rho_obs_max": 16,
+        "rho_bound": 16,
+        "ratio": 1.0
+      },
+      {
+        "query": "chain-3",
+        "K": 1024,
+        "tau_star": 2.0,
+        "rho_obs_max": 32,
+        "rho_bound": 32,
+        "ratio": 1.0
+      },
+      {
+        "query": "triangle",
+        "K": 64,
+        "tau_star": 2.0,
+        "rho_obs_max": 8,
+        "rho_bound": 8,
+        "ratio": 1.0
+      },
+      {
+        "query": "triangle",
+        "K": 256,
+        "tau_star": 2.0,
+        "rho_obs_max": 16,
+        "rho_bound": 16,
+        "ratio": 1.0
+      },
+      {
+        "query": "triangle",
+        "K": 1024,
+        "tau_star": 2.0,
+        "rho_obs_max": 32,
+        "rho_bound": 32,
+        "ratio": 1.0
+      },
+      {
+        "query": "C4",
+        "K": 64,
+        "tau_star": 2.0,
+        "rho_obs_max": 8,
+        "rho_bound": 8,
+        "ratio": 1.0
+      },
+      {
+        "query": "C4",
+        "K": 256,
+        "tau_star": 2.0,
+        "rho_obs_max": 16,
+        "rho_bound": 16,
+        "ratio": 1.0
+      },
+      {
+        "query": "C4",
+        "K": 1024,
+        "tau_star": 2.0,
+        "rho_obs_max": 32,
+        "rho_bound": 32,
+        "ratio": 1.0
+      }
+    ],
+    "max_ratio": 1.0,
+    "min_ratio": 1.0,
+    "bound_never_exceeded": true,
+    "bound_attained": true
+  },
+  "E29_multi_target": {
+    "rows": [
+      {
+        "m": 1,
+        "gamma": 16,
+        "linear_bound": 16,
+        "per_target_max": 16,
+        "per_target_mean": 16.0,
+        "rho_max": 16,
+        "within_linear": true
+      },
+      {
+        "m": 2,
+        "gamma": 32,
+        "linear_bound": 32,
+        "per_target_max": 16,
+        "per_target_mean": 16.0,
+        "rho_max": 16,
+        "within_linear": true
+      },
+      {
+        "m": 4,
+        "gamma": 64,
+        "linear_bound": 64,
+        "per_target_max": 16,
+        "per_target_mean": 16.0,
+        "rho_max": 16,
+        "within_linear": true
+      },
+      {
+        "m": 8,
+        "gamma": 128,
+        "linear_bound": 128,
+        "per_target_max": 16,
+        "per_target_mean": 16.0,
+        "rho_max": 16,
+        "within_linear": true
+      },
+      {
+        "m": 16,
+        "gamma": 256,
+        "linear_bound": 256,
+        "per_target_max": 16,
+        "per_target_mean": 16.0,
+        "rho_max": 16,
+        "within_linear": true
+      }
+    ],
+    "K": 256,
+    "all_within_linear": true,
+    "per_target_constant_in_m": true,
+    "per_target_value": 16,
+    "gamma_slope": 1.0
+  },
+  "E30_adaptive": {
+    "rows": [
+      {
+        "query": "chain-2",
+        "K": 256,
+        "b": 1,
+        "affected": 1,
+        "bound": 1,
+        "rho_max": 1,
+        "holds": true
+      },
+      {
+        "query": "chain-2",
+        "K": 256,
+        "b": 2,
+        "affected": 2,
+        "bound": 2,
+        "rho_max": 1,
+        "holds": true
+      },
+      {
+        "query": "chain-2",
+        "K": 256,
+        "b": 4,
+        "affected": 4,
+        "bound": 4,
+        "rho_max": 1,
+        "holds": true
+      },
+      {
+        "query": "chain-2",
+        "K": 256,
+        "b": 8,
+        "affected": 8,
+        "bound": 8,
+        "rho_max": 1,
+        "holds": true
+      },
+      {
+        "query": "chain-2",
+        "K": 256,
+        "b": 16,
+        "affected": 16,
+        "bound": 16,
+        "rho_max": 1,
+        "holds": true
+      },
+      {
+        "query": "chain-3",
+        "K": 256,
+        "b": 1,
+        "affected": 16,
+        "bound": 16,
+        "rho_max": 16,
+        "holds": true
+      },
+      {
+        "query": "chain-3",
+        "K": 256,
+        "b": 2,
+        "affected": 32,
+        "bound": 32,
+        "rho_max": 16,
+        "holds": true
+      },
+      {
+        "query": "chain-3",
+        "K": 256,
+        "b": 4,
+        "affected": 64,
+        "bound": 64,
+        "rho_max": 16,
+        "holds": true
+      },
+      {
+        "query": "chain-3",
+        "K": 256,
+        "b": 8,
+        "affected": 128,
+        "bound": 128,
+        "rho_max": 16,
+        "holds": true
+      },
+      {
+        "query": "chain-3",
+        "K": 256,
+        "b": 16,
+        "affected": 256,
+        "bound": 256,
+        "rho_max": 16,
+        "holds": true
+      },
+      {
+        "query": "triangle",
+        "K": 256,
+        "b": 1,
+        "affected": 16,
+        "bound": 16,
+        "rho_max": 16,
+        "holds": true
+      },
+      {
+        "query": "triangle",
+        "K": 256,
+        "b": 2,
+        "affected": 32,
+        "bound": 32,
+        "rho_max": 16,
+        "holds": true
+      },
+      {
+        "query": "triangle",
+        "K": 256,
+        "b": 4,
+        "affected": 64,
+        "bound": 64,
+        "rho_max": 16,
+        "holds": true
+      },
+      {
+        "query": "triangle",
+        "K": 256,
+        "b": 8,
+        "affected": 128,
+        "bound": 128,
+        "rho_max": 16,
+        "holds": true
+      },
+      {
+        "query": "triangle",
+        "K": 256,
+        "b": 16,
+        "affected": 256,
+        "bound": 256,
+        "rho_max": 16,
+        "holds": true
+      },
+      {
+        "query": "C4",
+        "K": 256,
+        "b": 1,
+        "affected": 16,
+        "bound": 16,
+        "rho_max": 16,
+        "holds": true
+      },
+      {
+        "query": "C4",
+        "K": 256,
+        "b": 2,
+        "affected": 32,
+        "bound": 32,
+        "rho_max": 16,
+        "holds": true
+      },
+      {
+        "query": "C4",
+        "K": 256,
+        "b": 4,
+        "affected": 64,
+        "bound": 64,
+        "rho_max": 16,
+        "holds": true
+      },
+      {
+        "query": "C4",
+        "K": 256,
+        "b": 8,
+        "affected": 128,
+        "bound": 128,
+        "rho_max": 16,
+        "holds": true
+      },
+      {
+        "query": "C4",
+        "K": 256,
+        "b": 16,
+        "affected": 256,
+        "bound": 256,
+        "rho_max": 16,
+        "holds": true
+      }
+    ],
+    "n": 20,
+    "violations": 0,
+    "max_ratio": 1.0
+  },
+  "E31_tightness": {
+    "rows": [
+      {
+        "query": "chain-2",
+        "K": 256,
+        "rho_max": 1,
+        "mu": 60,
+        "b_cert": 59,
+        "b_break": 60,
+        "tightness": 1.0169491525423728
+      },
+      {
+        "query": "chain-3",
+        "K": 256,
+        "rho_max": 16,
+        "mu": 60,
+        "b_cert": 3,
+        "b_break": 4,
+        "tightness": 1.3333333333333333
+      },
+      {
+        "query": "triangle",
+        "K": 256,
+        "rho_max": 16,
+        "mu": 60,
+        "b_cert": 3,
+        "b_break": 4,
+        "tightness": 1.3333333333333333
+      },
+      {
+        "query": "C4",
+        "K": 256,
+        "rho_max": 16,
+        "mu": 60,
+        "b_cert": 3,
+        "b_break": 4,
+        "tightness": 1.3333333333333333
+      }
+    ],
+    "mu": 60,
+    "min_tightness": 1.0169491525423728,
+    "max_tightness": 1.3333333333333333,
+    "mean_tightness": 1.254237288135593,
+    "certificate_nonvacuous": true,
+    "certificate_sound": true
+  }
+}
