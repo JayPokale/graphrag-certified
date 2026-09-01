@@ -1,0 +1,252 @@
+{
+  "n_cases": 35,
+  "n_tight": 35,
+  "n_slack": 0,
+  "rows": [
+    {
+      "query": "2-path",
+      "kind": "motif",
+      "d": 2,
+      "tau_star": 1.0,
+      "nu": 1
+    },
+    {
+      "query": "3-path",
+      "kind": "motif",
+      "d": 3,
+      "tau_star": 2.0,
+      "nu": 2
+    },
+    {
+      "query": "4-path",
+      "kind": "motif",
+      "d": 4,
+      "tau_star": 2.0,
+      "nu": 2
+    },
+    {
+      "query": "C3",
+      "kind": "motif",
+      "d": 3,
+      "tau_star": 2.0,
+      "nu": 2
+    },
+    {
+      "query": "C4",
+      "kind": "motif",
+      "d": 4,
+      "tau_star": 2.0,
+      "nu": 2
+    },
+    {
+      "query": "C5",
+      "kind": "motif",
+      "d": 5,
+      "tau_star": 3.0,
+      "nu": 3
+    },
+    {
+      "query": "C6",
+      "kind": "motif",
+      "d": 6,
+      "tau_star": 3.0,
+      "nu": 3
+    },
+    {
+      "query": "K1,3",
+      "kind": "motif",
+      "d": 3,
+      "tau_star": 3.0,
+      "nu": 3
+    },
+    {
+      "query": "K1,4",
+      "kind": "motif",
+      "d": 4,
+      "tau_star": 4.0,
+      "nu": 4
+    },
+    {
+      "query": "K1,5",
+      "kind": "motif",
+      "d": 5,
+      "tau_star": 5.0,
+      "nu": 5
+    },
+    {
+      "query": "scatter b=2",
+      "kind": "motif",
+      "d": 5,
+      "tau_star": 2.0,
+      "nu": 2
+    },
+    {
+      "query": "scatter b=3",
+      "kind": "motif",
+      "d": 7,
+      "tau_star": 2.0,
+      "nu": 2
+    },
+    {
+      "query": "bipartite 2,2",
+      "kind": "motif",
+      "d": 4,
+      "tau_star": 2.0,
+      "nu": 2
+    },
+    {
+      "query": "bipartite 2,3",
+      "kind": "motif",
+      "d": 6,
+      "tau_star": 3.0,
+      "nu": 3
+    },
+    {
+      "query": "theta k=5",
+      "kind": "motif",
+      "d": 5,
+      "tau_star": 3.0,
+      "nu": 3
+    },
+    {
+      "query": "Q2",
+      "kind": "tpch",
+      "d": 5,
+      "tau_star": 3.0,
+      "nu": 3
+    },
+    {
+      "query": "Q3",
+      "kind": "tpch",
+      "d": 3,
+      "tau_star": 2.0,
+      "nu": 2
+    },
+    {
+      "query": "Q4",
+      "kind": "tpch",
+      "d": 2,
+      "tau_star": 1.0,
+      "nu": 1
+    },
+    {
+      "query": "Q5",
+      "kind": "tpch",
+      "d": 6,
+      "tau_star": 3.0,
+      "nu": 3
+    },
+    {
+      "query": "Q7",
+      "kind": "tpch",
+      "d": 5,
+      "tau_star": 2.0,
+      "nu": 2
+    },
+    {
+      "query": "Q8",
+      "kind": "tpch",
+      "d": 7,
+      "tau_star": 4.0,
+      "nu": 4
+    },
+    {
+      "query": "Q9",
+      "kind": "tpch",
+      "d": 6,
+      "tau_star": 3.0,
+      "nu": 3
+    },
+    {
+      "query": "Q10",
+      "kind": "tpch",
+      "d": 4,
+      "tau_star": 2.0,
+      "nu": 2
+    },
+    {
+      "query": "Q11",
+      "kind": "tpch",
+      "d": 3,
+      "tau_star": 2.0,
+      "nu": 2
+    },
+    {
+      "query": "Q12",
+      "kind": "tpch",
+      "d": 2,
+      "tau_star": 1.0,
+      "nu": 1
+    },
+    {
+      "query": "Q13",
+      "kind": "tpch",
+      "d": 2,
+      "tau_star": 1.0,
+      "nu": 1
+    },
+    {
+      "query": "Q14",
+      "kind": "tpch",
+      "d": 2,
+      "tau_star": 1.0,
+      "nu": 1
+    },
+    {
+      "query": "Q15",
+      "kind": "tpch",
+      "d": 2,
+      "tau_star": 1.0,
+      "nu": 1
+    },
+    {
+      "query": "Q16",
+      "kind": "tpch",
+      "d": 3,
+      "tau_star": 2.0,
+      "nu": 2
+    },
+    {
+      "query": "Q17",
+      "kind": "tpch",
+      "d": 2,
+      "tau_star": 1.0,
+      "nu": 1
+    },
+    {
+      "query": "Q18",
+      "kind": "tpch",
+      "d": 3,
+      "tau_star": 2.0,
+      "nu": 2
+    },
+    {
+      "query": "Q19",
+      "kind": "tpch",
+      "d": 2,
+      "tau_star": 1.0,
+      "nu": 1
+    },
+    {
+      "query": "Q20",
+      "kind": "tpch",
+      "d": 5,
+      "tau_star": 2.0,
+      "nu": 2
+    },
+    {
+      "query": "Q21",
+      "kind": "tpch",
+      "d": 4,
+      "tau_star": 2.0,
+      "nu": 2
+    },
+    {
+      "query": "Q22",
+      "kind": "tpch",
+      "d": 2,
+      "tau_star": 1.0,
+      "nu": 1
+    }
+  ]
+}
