@@ -1,0 +1,139 @@
+{
+  "seed": 7,
+  "host": "mesh-surrogate",
+  "E34_fractional": {
+    "rows": [
+      {
+        "motif": "2-path (v-x-y)",
+        "anchor": 203,
+        "n_emb": 31,
+        "nu_star": 12.0,
+        "omega": 12,
+        "gap": 1.0,
+        "b_frac": 6,
+        "b_int": 5
+      },
+      {
+        "motif": "2-path (v-x-y)",
+        "anchor": 153,
+        "n_emb": 26,
+        "nu_star": 12.0,
+        "omega": 12,
+        "gap": 1.0,
+        "b_frac": 6,
+        "b_int": 5
+      },
+      {
+        "motif": "2-path (v-x-y)",
+        "anchor": 286,
+        "n_emb": 28,
+        "nu_star": 12.0,
+        "omega": 12,
+        "gap": 1.0,
+        "b_frac": 6,
+        "b_int": 5
+      },
+      {
+        "motif": "2-path (v-x-y)",
+        "anchor": 617,
+        "n_emb": 23,
+        "nu_star": 11.0,
+        "omega": 11,
+        "gap": 1.0,
+        "b_frac": 5,
+        "b_int": 5
+      },
+      {
+        "motif": "2-path (v-x-y)",
+        "anchor": 879,
+        "n_emb": 34,
+        "nu_star": 12.0,
+        "omega": 12,
+        "gap": 1.0,
+        "b_frac": 6,
+        "b_int": 5
+      },
+      {
+        "motif": "2-path (v-x-y)",
+        "anchor": 1617,
+        "n_emb": 27,
+        "nu_star": 12.0,
+        "omega": 12,
+        "gap": 1.0,
+        "b_frac": 6,
+        "b_int": 5
+      },
+      {
+        "motif": "2-path (v-x-y)",
+        "anchor": 2078,
+        "n_emb": 33,
+        "nu_star": 12.0,
+        "omega": 12,
+        "gap": 1.0,
+        "b_frac": 6,
+        "b_int": 5
+      },
+      {
+        "motif": "2-path (v-x-y)",
+        "anchor": 242,
+        "n_emb": 42,
+        "nu_star": 11.0,
+        "omega": 11,
+        "gap": 1.0,
+        "b_frac": 5,
+        "b_int": 5
+      },
+      {
+        "motif": "2-path (v-x-y)",
+        "anchor": 371,
+        "n_emb": 27,
+        "nu_star": 11.0,
+        "omega": 11,
+        "gap": 1.0,
+        "b_frac": 5,
+        "b_int": 5
+      },
+      {
+        "motif": "2-path (v-x-y)",
+        "anchor": 985,
+        "n_emb": 28,
+        "nu_star": 11.0,
+        "omega": 11,
+        "gap": 1.0,
+        "b_frac": 5,
+        "b_int": 5
+      }
+    ],
+    "summary": {
+      "2-path (v-x-y)": {
+        "n_anchors": 17,
+        "med_nu": 11.0,
+        "med_omega": 11.0,
+        "max_gap": 1.1,
+        "med_gap": 1.0,
+        "n_strict": 1,
+        "med_b_frac": 5.0,
+        "med_b_int": 5.0,
+        "nu_never_below_omega": true
+      },
+      "C4 (v-x-y-z)": {
+        "n_anchors": 15,
+        "med_nu": 4.0,
+        "med_omega": 3.0,
+        "max_gap": 1.75,
+        "med_gap": 1.0,
+        "n_strict": 6,
+        "med_b_frac": 2.0,
+        "med_b_int": 1.0,
+        "nu_never_below_omega": true
+      }
+    }
+  },
+  "E35_menger": {
+    "n_answers": 306,
+    "n_mismatch": 0,
+    "max_omega": 4,
+    "med_omega": 1.0,
+    "menger_exact": true
+  }
+}
