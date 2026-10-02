@@ -6,7 +6,8 @@ Theorem packing(ii) is proved with the INTEGRAL packing
 
 while part (i) achieves the exponent 1 - 1/tau*_A with the FRACTIONAL one.  The bound is
 therefore tight exactly where nu == tau*_A.  This checks that on every query the paper
-evaluates: the 15 motif families of E12 and the 20 multi-relation TPC-H queries of RD1.
+evaluates: the 15 motif families of E12 and the 20 multi-relation TPC-H queries of RD1,
+anchored as in the paper's table (and unanchored, recorded alongside).
 
     python3 nu_check.py        exits non-zero if any family has nu < tau*_A
 """
@@ -60,9 +61,14 @@ for q, tables in RD.TPCH_QUERIES.items():
     atoms = RD.query_atoms(tables)
     if len(atoms) < 2:
         continue
-    tau, nu = tau_star(atoms, frozenset()), nu_int(atoms, frozenset())
-    bad += tau - nu > 1e-9
-    rows.append(dict(query=q, kind="tpch", d=len(atoms), tau_star=tau, nu=nu))
+    # the paper's Table tpc-h quotes the ANCHORED value (constant predicates pinned), so
+    # that is the one the theorem must be tight on; the unanchored one is kept beside it
+    A = frozenset(RD.TPCH_ANCHORS.get(q, set()))
+    tau, nu = tau_star(atoms, A), nu_int(atoms, A)
+    tau0, nu0 = tau_star(atoms, frozenset()), nu_int(atoms, frozenset())
+    bad += (tau - nu > 1e-9) + (tau0 - nu0 > 1e-9)
+    rows.append(dict(query=q, kind="tpch", d=len(atoms), anchor=sorted(A), tau_star=tau, nu=nu,
+                     tau_star_unanchored=tau0, nu_unanchored=nu0))
 
 out = dict(n_cases=len(rows), n_tight=sum(1 for r in rows if abs(r["tau_star"] - r["nu"]) < 1e-9),
            n_slack=bad, rows=rows)

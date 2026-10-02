@@ -1,0 +1,5900 @@
+{
+  "seed": 20260917,
+  "hub_cap": 3000000,
+  "metaqa": {
+    "kb_triples": 134741,
+    "entities": 43234,
+    "2-hop": {
+      "n_answers": 92323,
+      "omega_hist": {
+        "0": 7,
+        "1": 89007,
+        "2": 2499,
+        "3": 415,
+        "4": 169,
+        "5": 84,
+        "6": 49,
+        "7": 28,
+        "8": 16,
+        "9": 14,
+        "10": 4,
+        "11": 5,
+        "12": 3,
+        "13": 5,
+        "14": 3,
+        "15": 4,
+        "16": 1,
+        "17": 4,
+        "18": 1,
+        "20": 1,
+        "21": 2,
+        "22": 2
+      },
+      "median": 1.0,
+      "mean": 1.0571146951463881,
+      "max": 22,
+      "frac_omega_1": 0.964082622965025,
+      "frac_certify_nothing": 0.9912264549462214,
+      "frac_certify_ge1": 0.008773545053778581,
+      "frac_certify_ge3": 0.0010073329506190224,
+      "label": "MetaQA 2-hop",
+      "n_questions_total": 14872,
+      "n_questions_scored": 14872,
+      "n_templates": 210,
+      "templates": {
+        "which person directed the movies starred by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 84
+        },
+        "who are movie co-directors of [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 13
+        },
+        "what are the primary languages in the movies directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 17
+        },
+        "the screenwriter [E] co-wrote movies with who": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 70
+        },
+        "the films acted by [E] were in which genres": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 80
+        },
+        "what are the genres of the films directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 52
+        },
+        "who appeared in the same movie with [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 99
+        },
+        "who are the actors in the films written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 94
+        },
+        "the movies starred by [E] were written by who": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 85
+        },
+        "what genres do the films starred by [E] fall under": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 73
+        },
+        "the director of [E] also directed which movies": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 113
+        },
+        "when were the movies starred by [E] released": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 101
+        },
+        "the movies starred by [E] were directed by who": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 100
+        },
+        "what were the release years the films starred by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 101
+        },
+        "what genres are the movies written by [E] in": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 82
+        },
+        "the films directed by [E] starred which actors": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 30
+        },
+        "which movies have the same actor of [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 117
+        },
+        "what types are the movies written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 84
+        },
+        "the films written by [E] starred which actors": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 90
+        },
+        "what were the release years the films written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 101
+        },
+        "who are the actors in the movies written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 73
+        },
+        "what types are the movies directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 49
+        },
+        "what are the films that are directed by the same director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 91
+        },
+        "who is listed as director of [E] starred movies": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 106
+        },
+        "the films directed by [E] were in which genres": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 52
+        },
+        "the director [E] co-directed films with who": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 21
+        },
+        "who acted together with [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 100
+        },
+        "when were the films directed by [E] released": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 56
+        },
+        "what languages are the films directed by [E] in": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 23
+        },
+        "which movies share the same director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 112
+        },
+        "the films acted by [E] were released in which years": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 92
+        },
+        "the movies directed by [E] were written by who": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 47
+        },
+        "the actor [E] appeared in the same movie with who": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 82
+        },
+        "what were the release dates of [E] written films": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 102
+        },
+        "what were the release years the films directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 54
+        },
+        "the director of [E] is also the director of which movies": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 103
+        },
+        "who is listed as screenwriter of [E] acted films": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 80
+        },
+        "who are movie co-writers of [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 88
+        },
+        "the director of [E] is also the director of which films": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 129
+        },
+        "who co-wrote films with [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 98
+        },
+        "which films share the same actor of [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 119
+        },
+        "which person directed the films acted by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 97
+        },
+        "what are the movies that have the same screenwriter of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 76
+        },
+        "what types are the films written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 87
+        },
+        "who co-directed films with [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 22
+        },
+        "the scriptwriter of [E] also wrote which films": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 80
+        },
+        "what genres are the films directed by [E] in": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 55
+        },
+        "the scriptwriter of [E] also wrote movies": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 97
+        },
+        "who directed the movies acted by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 101
+        },
+        "which person wrote the movies directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 46
+        },
+        "who starred in the movies written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 96
+        },
+        "the films acted by [E] were written by who": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 79
+        },
+        "the actor [E] co-starred with who": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 97
+        },
+        "the actor in [E] also appears in which films": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 113
+        },
+        "who are co-stars of [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 88
+        },
+        "which films have the same screenwriter of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 104
+        },
+        "what are the movies that have the same actor of [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 120
+        },
+        "which movies have the same screenwriter of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 81
+        },
+        "who starred movies for the writer [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 76
+        },
+        "the films written by [E] were released in which years": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 102
+        },
+        "which person directed the films written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 90
+        },
+        "the actor [E] acted together with who": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 111
+        },
+        "what are the genres of the movies written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 87
+        },
+        "who are the writers of the movies directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 34
+        },
+        "the actor of [E] also starred in which films": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 132
+        },
+        "which person wrote the films directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 32
+        },
+        "the movies directed by [E] starred who": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 41
+        },
+        "which person wrote the films acted by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 76
+        },
+        "the movies starred by [E] were in which genres": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 84
+        },
+        "which movies share the screenwriter with [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 101
+        },
+        "the movies starred by [E] were released in which years": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 90
+        },
+        "which movies have the same director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 116
+        },
+        "who directed the movies written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 80
+        },
+        "what are the main languages in [E] directed films": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 19
+        },
+        "who wrote movies together with [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 77
+        },
+        "what were the release years of the movies written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 102
+        },
+        "which films share the screenwriter with [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 96
+        },
+        "who starred together with [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 99
+        },
+        "who are film co-writers of [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 77
+        },
+        "which films share the same director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 106
+        },
+        "what were the release dates of [E] directed films": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 60
+        },
+        "which screenwriters co-wrote films with [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 73
+        },
+        "what were the release dates of [E] directed movies": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 58
+        },
+        "the screenwriter of [E] also wrote which films": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 85
+        },
+        "the movies written by [E] starred who": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 76
+        },
+        "the actor of [E] also starred in which movies": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 117
+        },
+        "what are the films that have the same actor of [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 117
+        },
+        "the director of [E] also directed which films": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 104
+        },
+        "when did the movies acted by [E] release": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 97
+        },
+        "when did the movies directed by [E] release": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 65
+        },
+        "what were the release years of the movies acted by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 106
+        },
+        "the films written by [E] were in which languages": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 25
+        },
+        "who directed the films starred by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 80
+        },
+        "what were the release dates of [E] starred movies": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 118
+        },
+        "who co-starred with [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 96
+        },
+        "the movies directed by [E] were released in which years": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 62
+        },
+        "the screenwriter [E] wrote films together with who": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 61
+        },
+        "what genres do the movies acted by [E] fall under": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 82
+        },
+        "the actor [E] is a co-star of who": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 97
+        },
+        "what types are the films starred by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 74
+        },
+        "the films written by [E] were directed by who": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 62
+        },
+        "what genres are the films written by [E] in": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 83
+        },
+        "who are the directors of the movies acted by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 86
+        },
+        "who is listed as director of [E] written movies": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 75
+        },
+        "who are the actors of the director [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 58
+        },
+        "who acted in the movies directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 60
+        },
+        "who is listed as director of [E] acted films": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 92
+        },
+        "who are the writers of the films starred by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 82
+        },
+        "who wrote the movies acted by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 73
+        },
+        "what were the release years of the movies directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 75
+        },
+        "who is listed as screenwriter of [E] starred movies": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 82
+        },
+        "who starred in the films written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 78
+        },
+        "the films acted by [E] were directed by who": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 104
+        },
+        "the films directed by [E] were in which languages": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 19
+        },
+        "who acted in the films written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 98
+        },
+        "when did the movies written by [E] release": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 115
+        },
+        "who wrote the screenplay for the movies starred by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 90
+        },
+        "what genres are the movies acted by [E] in": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 90
+        },
+        "what are the languages spoken in the movies written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 25
+        },
+        "what are the genres of the films starred by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 99
+        },
+        "what are the main languages in [E] written movies": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 21
+        },
+        "the actor in [E] also appears in which movies": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 127
+        },
+        "who starred in the films directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 50
+        },
+        "what are the main languages in [E] starred movies": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 27
+        },
+        "what languages are the films written by [E] in": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 27
+        },
+        "what types are the films directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 57
+        },
+        "who starred in the movies directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 50
+        },
+        "what genres are the films acted by [E] in": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 82
+        },
+        "who acted in the movies written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 71
+        },
+        "what genres are the movies directed by [E] in": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 42
+        },
+        "what were the release dates of [E] acted films": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 88
+        },
+        "which movies share the same actor of [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 119
+        },
+        "when were the films written by [E] released": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 98
+        },
+        "the screenwriter [E] co-wrote films with who": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 79
+        },
+        "the actor [E] starred together with who": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 102
+        },
+        "who is listed as screenwriter of [E] directed films": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 38
+        },
+        "who are the writers of the movies acted by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 92
+        },
+        "what are the languages spoken in the films directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 24
+        },
+        "the movies directed by [E] were in which languages": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 22
+        },
+        "when did the films directed by [E] release": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 49
+        },
+        "what are the genres of the movies acted by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 92
+        },
+        "when were the films acted by [E] released": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 98
+        },
+        "which films have the same director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 114
+        },
+        "the screenwriter of [E] also wrote which movies": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 86
+        },
+        "who are the directors of the films written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 69
+        },
+        "what genres do the movies written by [E] fall under": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 87
+        },
+        "what are the genres of the movies directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 48
+        },
+        "which person directed the movies written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 80
+        },
+        "when were the movies written by [E] released": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 98
+        },
+        "what genres do the films written by [E] fall under": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 88
+        },
+        "when did the films starred by [E] release": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 94
+        },
+        "what were the release dates of [E] written movies": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 105
+        },
+        "who starred movies for the director [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 44
+        },
+        "the films written by [E] were in which genres": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 80
+        },
+        "what are the genres of the films written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 95
+        },
+        "what are the films that have the same screenwriter of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 90
+        },
+        "who are the directors of the movies written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 80
+        },
+        "who directed the films written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 85
+        },
+        "what genres do the movies directed by [E] fall under": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 57
+        },
+        "the director [E] co-directed movies with who": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 22
+        },
+        "what are the languages spoken in the films starred by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 27
+        },
+        "when did the films written by [E] release": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 103
+        },
+        "what are the movies that are directed by the same director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 93
+        },
+        "which films have the same actor of [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 99
+        },
+        "what languages are the movies acted by [E] in": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 35
+        },
+        "who is listed as director of [E] written films": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 74
+        },
+        "which screenwriters co-wrote movies with [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 71
+        },
+        "what types are the movies starred by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 67
+        },
+        "what are the primary languages in the films written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 21
+        },
+        "what are the primary languages in the movies acted by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 40
+        },
+        "the films directed by [E] were released in which years": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 55
+        },
+        "the movies written by [E] were released in which years": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 94
+        },
+        "which person wrote the movies starred by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 95
+        },
+        "what are the main languages in [E] acted films": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 30
+        },
+        "the movies written by [E] were in which genres": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 71
+        },
+        "who are the writers of the films directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 31
+        },
+        "who are the directors of the films starred by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 79
+        },
+        "what genres do the films directed by [E] fall under": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 55
+        },
+        "the movies written by [E] were directed by who": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 68
+        },
+        "the movies written by [E] were in which languages": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 22
+        },
+        "who are the actors of the screenwriter [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 0.975,
+          "n_questions": 86
+        },
+        "the movies starred by [E] were in which languages": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 40
+        },
+        "who wrote films together with [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 69
+        },
+        "who wrote the movies directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 46
+        },
+        "what are the main languages in [E] written films": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 35
+        },
+        "the movies directed by [E] were in which genres": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 66
+        },
+        "who acted in the films directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 46
+        },
+        "what languages are the movies directed by [E] in": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 14
+        },
+        "what are the primary languages in the films acted by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 34
+        },
+        "who are the actors in the films directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 52
+        },
+        "who are the actors in the movies directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 52
+        },
+        "who directed movies together with [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 19
+        },
+        "the films acted by [E] were in which languages": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 40
+        },
+        "what languages are the films starred by [E] in": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 27
+        },
+        "when were the movies directed by [E] released": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 60
+        },
+        "the films directed by [E] were written by who": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 51
+        },
+        "what are the languages spoken in the movies directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 23
+        },
+        "which directors co-directed movies with [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 15
+        },
+        "what are the languages spoken in the films written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 25
+        },
+        "what languages are the movies written by [E] in": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 31
+        },
+        "who wrote the screenplay for the movies directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 34
+        },
+        "what are the languages spoken in the movies acted by [E]": {
+          "path": [
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 26
+        },
+        "who is listed as screenwriter of [E] directed movies": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 43
+        },
+        "who directed films together with [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 20
+        },
+        "what are the primary languages in the films directed by [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 21
+        },
+        "what are the primary languages in the movies written by [E]": {
+          "path": [
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 18
+        },
+        "who are film co-directors of [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 15
+        },
+        "what are the main languages in [E] directed movies": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 11
+        },
+        "[E] directed films together with who": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 8
+        },
+        "which directors co-directed films with [E]": {
+          "path": [
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 9
+        }
+      },
+      "frac_questions_with_a_certifiable_answer": 0.038461538461538464,
+      "disjointness_violations": 0,
+      "answers_skipped_hub": 0,
+      "questions_without_inferred_path": 0,
+      "seconds": 1.2
+    },
+    "3-hop": {
+      "n_answers": 191110,
+      "omega_hist": {
+        "0": 2261,
+        "1": 176767,
+        "2": 9521,
+        "3": 2054,
+        "4": 445,
+        "5": 38,
+        "6": 13,
+        "7": 9,
+        "8": 1,
+        "9": 1
+      },
+      "median": 1.0,
+      "mean": 1.067966092826121,
+      "max": 9,
+      "frac_omega_1": 0.9249489822615248,
+      "frac_certify_nothing": 0.9865993406938413,
+      "frac_certify_ge1": 0.013400659306158757,
+      "frac_certify_ge3": 5.755847417717545e-05,
+      "label": "MetaQA 3-hop",
+      "n_questions_total": 14274,
+      "n_questions_scored": 14274,
+      "n_templates": 150,
+      "templates": {
+        "the films that share directors with the film [E] were in which languages": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 65
+        },
+        "who starred movies for the director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 96
+        },
+        "the films that share actors with the film [E] were in which languages": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 87
+        },
+        "what were the release years of the films that share writers with the film [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 82
+        },
+        "who is listed as director of the films starred by [E] actors": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 134
+        },
+        "the films that share directors with the film [E] were in which genres": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 110
+        },
+        "what genres do the films that share directors with [E] fall under": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 101
+        },
+        "who are the directors of the movies written by the writer of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 87
+        },
+        "the movies that share actors with the movie [E] were in which languages": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 85
+        },
+        "who directed movies for the writer of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 95
+        },
+        "when did the movies starred by [E] actors release": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 128
+        },
+        "the films that share actors with the film [E] are directed by who": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 117
+        },
+        "when did the films written by [E] writers release": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 63
+        },
+        "who are the writers that the actors in their films also appear in the film [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 129
+        },
+        "what genres are the movies starred by [E] actors": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 125
+        },
+        "who are the screenwriters that the directors of their movies also directed [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 125
+        },
+        "what are the languages spoken in the movies whose actors also appear in [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 96
+        },
+        "what are the genres of the movies whose writers also wrote [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 85
+        },
+        "who starred films for the director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 115
+        },
+        "what are the genres of the movies whose actors also appear in [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 126
+        },
+        "what genres do the movies that share directors with [E] fall under": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 112
+        },
+        "which person wrote the films acted by the actors in [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 142
+        },
+        "who are the directors that the actors in their films also appear in the film [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 116
+        },
+        "the films that share writers with the film [E] were in which genres": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 71
+        },
+        "who starred in the movies whose writers also wrote [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 83
+        },
+        "when did the movies release whose actors also appear in the movie [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 112
+        },
+        "who are the directors of films whose writers also wrote [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 92
+        },
+        "who directed films for the writer of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 103
+        },
+        "the films written by the writer of [E] starred who": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 101
+        },
+        "what are the genres of the films whose screenwriters also wrote [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 86
+        },
+        "what were the release dates of films starred by actors in [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 112
+        },
+        "who are the actors in the films directed by the director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 98
+        },
+        "who wrote movies that share directors with the movie [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 136
+        },
+        "when did the movies release whose writers also wrote [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 85
+        },
+        "which person directed the films acted by the actors in [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 123
+        },
+        "what are the genres of the films whose actors also appear in [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 113
+        },
+        "when did the films release whose directors also directed [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 104
+        },
+        "what types are the films directed by the director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 119
+        },
+        "the movies that share directors with the movie [E] were released in which years": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 114
+        },
+        "who acted in the films directed by the director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 95
+        },
+        "what were the release dates of movies written by the writer of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 90
+        },
+        "what genres do the films that share actors with [E] fall under": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 112
+        },
+        "who wrote movies that share actors with the movie [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 118
+        },
+        "who are the directors that the actors in their movies also appear in the movie [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 118
+        },
+        "what genres are the films written by [E] screenwriters": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 90
+        },
+        "what are the languages spoken in the movies whose directors also directed [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 55
+        },
+        "which person directed the movies starred by the actors in [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 104
+        },
+        "what were the release years of the movies that share directors with the movie [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 118
+        },
+        "who starred in the movies whose director also directed [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 103
+        },
+        "the movies that share actors with the movie [E] were in which genres": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 101
+        },
+        "who are the writers that the directors of their films also directed [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 112
+        },
+        "when did the films directed by the [E] director release": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 116
+        },
+        "when did the films starred by [E] actors release": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 110
+        },
+        "what genres are the movies directed by the [E] director": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 100
+        },
+        "the movies written by the screenwriter of [E] were directed by who": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 86
+        },
+        "the movies directed by the director of [E] starred who": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 108
+        },
+        "what are the primary languages in the films starred by actors in [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 78
+        },
+        "the movies that share writers with the movie [E] were released in which years": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 99
+        },
+        "who directed the films written by the writer of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 82
+        },
+        "the films written by the screenwriter of [E] were directed by who": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 92
+        },
+        "what were the release years of the films that share directors with the film [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 105
+        },
+        "who are the actors in the films written by the screenwriter of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 86
+        },
+        "what are the genres of the films whose directors also directed [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 112
+        },
+        "who directed the movies written by the writer of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 90
+        },
+        "who is listed as director of the movies starred by [E] actors": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 113
+        },
+        "the movies written by the screenwriter of [E] starred who": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 95
+        },
+        "who are the directors of the films written by the writer of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 100
+        },
+        "what genres are the movies written by [E] writers": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 85
+        },
+        "who is listed as screenwriter of the movies starred by [E] actors": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 119
+        },
+        "who starred in the films whose screenwriters also wrote [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 85
+        },
+        "what were the release dates of movies starred by actors in [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 110
+        },
+        "what languages are the films that share actors with [E] in": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 87
+        },
+        "what are the languages spoken in the movies written by [E] writers": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 41
+        },
+        "the movies that share actors with the movie [E] are directed by who": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 104
+        },
+        "what genres do the movies that share screenwriters with [E] fall under": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 75
+        },
+        "the films that share actors with the film [E] were released in which years": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 108
+        },
+        "what were the release dates of films directed by the director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 114
+        },
+        "the movies that share directors with the movie [E] were in which languages": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 67
+        },
+        "what languages are the films that share directors with [E] in": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 58
+        },
+        "what are the languages spoken in the movies starred by [E] actors": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 84
+        },
+        "what genres do the movies that share actors with [E] fall under": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 112
+        },
+        "what were the release dates of films written by the screenwriter of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 87
+        },
+        "who directed movies that share actors with the movie [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 117
+        },
+        "the movies that share directors with the movie [E] were in which genres": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 106
+        },
+        "who is listed as screenwriter of the movies directed by the [E] director": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 110
+        },
+        "which person wrote the movies starred by the actors in [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 113
+        },
+        "the movies that share actors with the movie [E] were released in which years": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 119
+        },
+        "what types are the movies directed by the director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 85
+        },
+        "when did the movies written by [E] writers release": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 75
+        },
+        "what are the primary languages in the movies directed by the director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 58
+        },
+        "who are the actors in the movies written by the writer of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 71
+        },
+        "who starred in the films whose directors also directed [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 114
+        },
+        "who are the actors in the movies directed by the director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 125
+        },
+        "who wrote films that share directors with the film [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 117
+        },
+        "what types are the films starred by actors in [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 141
+        },
+        "the films that share screenwriters with [E] were released in which years": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 90
+        },
+        "who are the screenwriters that the actors in their movies also appear in the movie [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 116
+        },
+        "what are the languages spoken in the films whose writers also wrote [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 44
+        },
+        "what languages are the movies that share directors with [E] in": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 51
+        },
+        "the films that share directors with the films [E] are written by who": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 99
+        },
+        "the films directed by the director of [E] starred who": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 99
+        },
+        "who directed films that share actors with the film [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 120
+        },
+        "the films that share directors with the film [E] were released in which years": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 112
+        },
+        "who starred films for the screenwriter of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 88
+        },
+        "who acted in the movies written by the writer of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 100
+        },
+        "what genres are the films starred by [E] actors": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 112
+        },
+        "when did the films release whose actors also appear in the film [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 124
+        },
+        "which person wrote the movies directed by the director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 109
+        },
+        "who acted in the films written by the screenwriter of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 84
+        },
+        "what are the genres of the movies whose directors also directed [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 103
+        },
+        "what genres do the films that share writers with [E] fall under": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 87
+        },
+        "what are the primary languages in the movies starred by actors in [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 75
+        },
+        "the movies that share writers with the movie [E] were in which genres": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 89
+        },
+        "which person wrote the films directed by the director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 98
+        },
+        "what are the primary languages in the films directed by the director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 77
+        },
+        "who is listed as screenwriter of the films starred by [E] actors": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 119
+        },
+        "the movies that share directors with the movie [E] are written by who": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 113
+        },
+        "who wrote films that share actors with the film [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 87
+        },
+        "who is listed as screenwriter of the films directed by the [E] director": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 132
+        },
+        "what types are the movies written by the writer of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 85
+        },
+        "what were the release years of the movies that share actors with the movie [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 94
+        },
+        "the films that share actors with the film [E] were in which genres": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 106
+        },
+        "when did the films release whose screenwriters also wrote [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 80
+        },
+        "what types are the movies starred by actors in [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 100
+        },
+        "the movies that share writers with the movie [E] were in which languages": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 35
+        },
+        "what are the primary languages in the movies written by the writer of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 37
+        },
+        "the movies that share screenwriters with the movie [E] were in which languages": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 36
+        },
+        "what types are the movies written by the screenwriter of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 82
+        },
+        "what languages are the movies that share screenwriters with [E] in": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 35
+        },
+        "the movies that share actors with the movie [E] are written by who": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 124
+        },
+        "what languages are the films that share writers with [E] in": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 41
+        },
+        "what are the languages spoken in the films starred by [E] actors": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 80
+        },
+        "what were the release dates of movies directed by the director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 91
+        },
+        "what are the languages spoken in the movies whose writers also wrote [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 35
+        },
+        "what are the languages spoken in the films whose actors also appear in [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 93
+        },
+        "when did the movies directed by the [E] director release": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 119
+        },
+        "what genres are the films directed by the [E] director": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "has_genre",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 97
+        },
+        "what were the release years of the films that share actors with the film [E]": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 115
+        },
+        "what are the languages spoken in the films directed by the [E] director": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 61
+        },
+        "who are the directors of movies whose writers also wrote [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "directed_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 90
+        },
+        "who starred movies for the writer of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 80
+        },
+        "the films that share actors with the film [E] are written by who": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "written_by",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 115
+        },
+        "when did the movies release whose directors also directed [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 106
+        },
+        "what are the languages spoken in the films whose directors also directed [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 65
+        },
+        "what are the languages spoken in the films written by [E] screenwriters": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 31
+        },
+        "what are the primary languages in the films written by the screenwriter of [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 33
+        },
+        "what are the languages spoken in the movies directed by the [E] director": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 59
+        },
+        "who acted in the movies directed by the director of [E]": {
+          "path": [
+            [
+              "directed_by",
+              1
+            ],
+            [
+              "directed_by",
+              -1
+            ],
+            [
+              "starred_actors",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 116
+        },
+        "what were the release years of the movies that share screenwriters with the movie [E]": {
+          "path": [
+            [
+              "written_by",
+              1
+            ],
+            [
+              "written_by",
+              -1
+            ],
+            [
+              "release_year",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 82
+        },
+        "what languages are the movies that share actors with [E] in": {
+          "path": [
+            [
+              "starred_actors",
+              1
+            ],
+            [
+              "starred_actors",
+              -1
+            ],
+            [
+              "in_language",
+              1
+            ]
+          ],
+          "support": 1.0,
+          "n_questions": 75
+        }
+      },
+      "frac_questions_with_a_certifiable_answer": 0.060459576853019475,
+      "disjointness_violations": 0,
+      "answers_skipped_hub": 0,
+      "questions_without_inferred_path": 0,
+      "seconds": 26.0
+    }
+  },
+  "hetionet": {
+    "nodes": 47031,
+    "edges": 2250197,
+    "metapaths": {
+      "CbGaD": {
+        "n_answers": 5841,
+        "omega_hist": {
+          "1": 3856,
+          "2": 1099,
+          "3": 405,
+          "4": 215,
+          "5": 108,
+          "6": 58,
+          "7": 36,
+          "8": 21,
+          "9": 18,
+          "10": 9,
+          "11": 7,
+          "12": 4,
+          "13": 2,
+          "15": 3
+        },
+        "median": 1.0,
+        "mean": 1.692347200821777,
+        "max": 15,
+        "frac_omega_1": 0.660160931347372,
+        "frac_certify_nothing": 0.8483136449238144,
+        "frac_certify_ge1": 0.15168635507618558,
+        "frac_certify_ge3": 0.01712035610340695,
+        "label": "Hetionet CbGaD",
+        "question": "which diseases are associated with a gene this compound binds",
+        "anchor_kind": "Compound",
+        "path": [
+          [
+            "CbG",
+            1
+          ],
+          [
+            "DaG",
+            -1
+          ]
+        ],
+        "n_anchors": 300,
+        "disjointness_violations": 0,
+        "answers_skipped_hub": 0,
+        "seconds": 0.1
+      },
+      "GrGbC": {
+        "n_answers": 10656,
+        "omega_hist": {
+          "1": 9988,
+          "2": 566,
+          "3": 85,
+          "4": 16,
+          "5": 1
+        },
+        "median": 1.0,
+        "mean": 1.0739489489489489,
+        "max": 5,
+        "frac_omega_1": 0.9373123123123123,
+        "frac_certify_nothing": 0.9904279279279279,
+        "frac_certify_ge1": 0.009572072072072071,
+        "frac_certify_ge3": 0.0,
+        "label": "Hetionet GrGbC",
+        "question": "which compounds bind a gene this gene regulates",
+        "anchor_kind": "Gene",
+        "path": [
+          [
+            "Gr>G",
+            1
+          ],
+          [
+            "CbG",
+            -1
+          ]
+        ],
+        "n_anchors": 300,
+        "disjointness_violations": 0,
+        "answers_skipped_hub": 0,
+        "seconds": 1.4
+      },
+      "CrCtD": {
+        "n_answers": 646,
+        "omega_hist": {
+          "1": 410,
+          "2": 107,
+          "3": 28,
+          "4": 32,
+          "5": 30,
+          "6": 18,
+          "7": 8,
+          "8": 3,
+          "9": 3,
+          "10": 2,
+          "11": 3,
+          "12": 1,
+          "13": 1
+        },
+        "median": 1.0,
+        "mean": 1.979876160990712,
+        "max": 13,
+        "frac_omega_1": 0.6346749226006192,
+        "frac_certify_nothing": 0.8003095975232198,
+        "frac_certify_ge1": 0.1996904024767802,
+        "frac_certify_ge3": 0.032507739938080496,
+        "label": "Hetionet CrCtD",
+        "question": "which diseases are treated by a compound resembling this one",
+        "anchor_kind": "Compound",
+        "path": [
+          [
+            "CrC",
+            1
+          ],
+          [
+            "CtD",
+            1
+          ]
+        ],
+        "n_anchors": 300,
+        "disjointness_violations": 0,
+        "answers_skipped_hub": 0,
+        "seconds": 0.0
+      },
+      "CtDaGbC": {
+        "n_answers": 186015,
+        "omega_hist": {
+          "1": 157275,
+          "2": 20434,
+          "3": 5353,
+          "4": 1696,
+          "5": 588,
+          "6": 309,
+          "7": 160,
+          "8": 99,
+          "9": 35,
+          "10": 21,
+          "11": 17,
+          "12": 14,
+          "13": 5,
+          "14": 6,
+          "15": 2,
+          "16": 1
+        },
+        "median": 1.0,
+        "mean": 1.2298309276133645,
+        "max": 16,
+        "frac_omega_1": 0.8454963309410531,
+        "frac_certify_nothing": 0.9553476870144881,
+        "frac_certify_ge1": 0.04465231298551192,
+        "frac_certify_ge3": 0.0019353277961454722,
+        "label": "Hetionet CtDaGbC",
+        "question": "which compounds bind a gene associated with a disease this compound treats",
+        "anchor_kind": "Compound",
+        "path": [
+          [
+            "CtD",
+            1
+          ],
+          [
+            "DaG",
+            1
+          ],
+          [
+            "CbG",
+            -1
+          ]
+        ],
+        "n_anchors": 300,
+        "disjointness_violations": 0,
+        "answers_skipped_hub": 0,
+        "seconds": 37.4
+      }
+    }
+  }
+}

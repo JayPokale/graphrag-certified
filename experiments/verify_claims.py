@@ -547,6 +547,109 @@ if "E24_skew_separation" in _pk:
 
 # --- E28-E31: the security experiments -------------------------------------
 _mt_path = os.path.join(HERE, "results_multitarget.json")
+# --- E32/E33/E36: exact rho_F, maximum packing, the duplicate attack ------------------
+_W = os.path.join(HERE, "results_witness.json")
+if os.path.exists(_W):
+    print("\n--- E32/E33/E36: reachable damage, witness packing, duplicate attack ---")
+    W = json.load(open(_W))
+    _recs = [r for k in ("E32_E33_2path", "E32_E33_C4") for r in W[k]["records"]]
+    _rows = [row for r in _recs for row in r["rows"]]
+    check("E32 rho_F never exceeds rho_max (the certificate is a bound)",
+          all(r["rho_F_never_exceeds_rho_max"] for r in _recs))
+    check("E32 exact rho_F equals rho_max at the median on both motifs",
+          all(r["med_rho_F"] == r["max_rho_max"] for r in _recs),
+          "so the instance certificate is sound but not tighter here")
+    check("E33 the exact packing is never smaller than greedy",
+          all(row["omega"] >= row["omega_greedy"] for row in _rows))
+    check("E33 greedy is not always maximum (else the ILP is pointless)",
+          any(r["greedy_is_maximum"] < r["n_anchors"] for r in _recs),
+          "greedy = max at %s" % [(r["greedy_is_maximum"], r["n_anchors"]) for r in _recs])
+    check("E36 a copy of any witness edge reaches at least one firing cell, every anchor",
+          all(r["dup_min_at_least_1"] for r in _recs))
+    check("E36 the blind copy never beats the white-box rho_F",
+          all(row["dup_blind"] <= row["rho_F"] for row in _rows))
+    check("E36 the blind copy reaches about half of rho_F at the median",
+          all(0.4 <= r["dup_blind_over_rho_F"] <= 0.7 for r in _recs),
+          "medians %s" % [round(r["dup_blind_over_rho_F"], 2) for r in _recs])
+    _p256 = [r for r in W["E32_E33_2path"]["records"] if r["K"] == 256][0]
+    check("E36 on the sparse 2-path at K=256 the copy beats a fresh content by > 10x",
+          _p256["dup_blind_over_fresh"] > 10, "%.1fx" % _p256["dup_blind_over_fresh"])
+
+# --- real KGQA workloads ------------------------------------------------------------
+_KG = os.path.join(HERE, "results_kgomega.json")
+if os.path.exists(_KG):
+    print("\n--- kg-omega: MetaQA and Hetionet ---")
+    KG = json.load(open(_KG))
+    _all = [KG["metaqa"]["2-hop"], KG["metaqa"]["3-hop"], *KG["hetionet"]["metapaths"].values()]
+    check("kg every extracted witness family is physically edge-disjoint",
+          all(s["disjointness_violations"] == 0 for s in _all))
+    check("kg no answer was skipped as a hub", all(s["answers_skipped_hub"] == 0 for s in _all))
+    check("kg every MetaQA test question was scored",
+          all(KG["metaqa"][h]["n_questions_scored"] == KG["metaqa"][h]["n_questions_total"] for h in ("2-hop", "3-hop")))
+    check("kg every MetaQA template path is inferred with Jaccard >= 0.9 against the gold answers",
+          all(p["support"] >= 0.9 for h in ("2-hop", "3-hop") for p in KG["metaqa"][h]["templates"].values()),
+          "min %.3f" % min(p["support"] for h in ("2-hop", "3-hop") for p in KG["metaqa"][h]["templates"].values()))
+    check("kg the median answer rests on one chain in every workload",
+          all(s["median"] == 1 for s in _all))
+    check("kg fewer than 2% of MetaQA answers certify even one forged relation",
+          all(KG["metaqa"][h]["frac_certify_ge1"] < 0.02 for h in ("2-hop", "3-hop")))
+    check("kg well-corroborated answers exist (the ceiling is not vacuous everywhere)",
+          max(s["max"] for s in _all) >= 10, "max omega %d" % max(s["max"] for s in _all))
+
+# --- the corroboration limit: omega <= nu* <= tau, and what the transversal rule buys --------
+_MGp = os.path.join(HERE, "results_menger.json")
+if os.path.exists(_MGp):
+    print("\n--- E34: omega, nu*, tau on PEGASE (Thm limit) ---")
+    _S = json.load(open(_MGp))["E34_fractional"]["summary"]
+    _p2, _c4 = _S["2-path (v-x-y)"], _S["C4 (v-x-y-z)"]
+    check("E34 omega <= nu* <= tau at every anchor of both motifs",
+          _p2["chain_holds"] and _c4["chain_holds"])
+    check("E34 on the 2-path (a path) all three coincide, as Menger says",
+          _p2["n_tau_eq_omega"] == _p2["n_anchors"] and _p2["max_gap"] == 1.0)
+    check("E34 on the C4 the integral gap tau/nu* is real (> 1.5)",
+          _c4["max_tau_over_nu"] > 1.5, "max %.2f" % _c4["max_tau_over_nu"])
+    check("E34 the transversal rule certifies more than twice witness packing on the C4 (median)",
+          _c4["med_b_tau"] > 2 * _c4["med_b_int"], "%g against %g" % (_c4["med_b_tau"], _c4["med_b_int"]))
+
+_KC = os.path.join(HERE, "results_kgclaims.json")
+if os.path.exists(_KC):
+    print("\n--- claim-check: Hetionet treatment claims under seven metapaths ---")
+    KC = json.load(open(_KC))
+    _t, _n = KC["true_claims"]["summary"], KC["non_claims"]["summary"]
+    check("claims every CtD edge and an equal number of non-claims scored",
+          _t["n"] == 755 and _n["n"] == 755)
+    check("claims no witness enumeration hit the cap", _t["n_capped"] == 0 and _n["n_capped"] == 0)
+    check("claims omega <= nu* <= tau on every pair",
+          _t["omega_le_nu"] and _t["nu_le_tau"] and _n["omega_le_nu"] and _n["nu_le_tau"])
+    check("claims most true claims certify one forged relation (tau >= 3)",
+          _t["pct_neut_t1"] > 50, "%.1f%%" % _t["pct_neut_t1"])
+    check("claims the threshold separates claims from non-claims by > 5x at t = 1",
+          _t["pct_neut_t1"] > 5 * _n["pct_neut_t1"], "%.1f%% vs %.1f%%" % (_t["pct_neut_t1"], _n["pct_neut_t1"]))
+
+# --- end to end: fact isolation with a real LLM reader ----------------------------------
+_E2E = os.path.join(HERE, "results_e2e.json")
+if os.path.exists(_E2E):
+    print("\n--- e2e: fact isolation, real reader, four attacks ---")
+    E = json.load(open(_E2E))
+    _m, _s = E["meta"], E["summary"]
+    check("e2e was run against a real model, not the offline stand-in",
+          not _m["dry_run"] and _m["model"] not in ("", "mock"), _m["model"])
+    check("e2e every reply was complete (no reply cut at max_tokens)", _m["truncated"] == 0,
+          "%d truncated" % _m["truncated"])
+    check("e2e workload sizes as stated: 200 MetaQA questions, 150 Hetionet claims",
+          _s["clean"]["metaqa"]["n"] == 200 and _s["clean"]["hetionet"]["n"] == 150)
+    check("e2e all four attacks ran at both budgets on both datasets' applicable sides",
+          all(any(k.split("/")[1] == a for k in _s["attacks"]) for a in ("gragpoison", "kepo", "mincut", "injection")))
+    check("e2e SOUND: no attack within the clean certified budget changed a defended report",
+          _s["sound"] and all(v["success_within_cert"] == 0 for v in _s["attacks"].values()))
+    _rows = E["attack_rows"]
+    check("e2e every attacked report change spent more operations than the certificate allowed",
+          all(r["ops"] > r["clean_cert"] for r in _rows if r["defended_success"]),
+          "%d report changes" % sum(r["defended_success"] for r in _rows))
+    check("e2e the reader's honest false-negative rate is measured on both datasets",
+          any(k.startswith("metaqa") for k in _s["reader"]["honest_fn"]) and
+          any(k.startswith("hetionet") for k in _s["reader"]["honest_fn"]))
+
 if os.path.exists(_mt_path):
     M = json.load(open(_mt_path))
     print("\n--- E28-E31: security experiments ---")

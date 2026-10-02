@@ -63,8 +63,14 @@ import json
 import math
 import os
 import random
+import re
 import sys
+import threading
+import time
+import urllib.error
+import urllib.request
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
 
 import numpy as np
 
@@ -219,26 +225,43 @@ def render(edges, k, anchor, payload):
     return PROMPT.format(edges=body + payload, k=k, anchor=anchor)
 
 
-def build_query(cube, B, payload_kind, rng):
+def build_query(cube, B, payload_kind, rng, n_wit=6, attack="dup"):
     """Returns (prompts, truths, payload_cells, diagnostics).
 
     truths[i] is the ground truth for cell i: does it hold a COMPLETE cycle.
-    payload_cells is the set of cells the forged edge actually hashes into -- the
+    payload_cells is the set of cells the forged item actually hashes into -- the
     replication the certificate charges for, and the correlation the theorem prices.
+
+    The instance plants n_wit witnesses that SHARE the anchor's first edge (v, u1) and
+    are otherwise distinct: the shared-relation structure the attacks exploit.  Each
+    witness lands in its own cell c^phi (Prop. margin), so c_1 is about n_wit rather
+    than 1.  The forged item is either
+      dup    a copy of the shared honest edge (v, u1) carrying the payload -- routed
+             exactly as that edge under A1, so it reaches EVERY firing cell, which is
+             the one-payload-many-readers event the correlation budget kappa prices; or
+      fresh  a new edge (v, random) -- a fresh content, whose cell-set is a slice the
+             partition draws on its own, and which meets the firing set only by chance.
+    An earlier version planted one witness, so exactly one cell could ever err and
+    kappa was a clamp at 1 rather than a measurement.
     """
     k, K = cube.k, cube.K
-    accts = [f"E{n:04d}" for n in rng.sample(range(1000, 9999), k + 400)]
-    cyc = accts[:k]
-    cyc[0] = "E0000"                                      # the anchor
-    motif = [(cyc[i], cyc[(i + 1) % k]) for i in range(k)]
+    accts = [f"E{n:04d}" for n in rng.sample(range(1000, 9999), n_wit * k + 400)]
+    anchor, u1 = "E0000", accts[0]
+    pool = accts[n_wit * k:]
+    motifs = []
+    for w in range(n_wit):
+        cyc = [anchor, u1] + accts[1 + w * (k - 2): 1 + (w + 1) * (k - 2)]
+        motifs.append([(cyc[i], cyc[(i + 1) % k]) for i in range(k)])
+    shared = (anchor, u1)
 
     held = defaultdict(list)
-    for e, slot in zip(motif, cube.slots):
-        for ci in cube.place(e, slot):
-            held[ci].append(e)
+    for motif in motifs:
+        for e, slot in zip(motif, cube.slots):
+            for ci in cube.place(e, slot):
+                if e not in held[ci]:
+                    held[ci].append(e)
 
     # background traffic, placed by the same rule so cells look realistic
-    pool = accts[k:]
     for _ in range(B * K):
         e = (rng.choice(pool), rng.choice(pool))
         slot = rng.choice(cube.slots)
@@ -246,26 +269,29 @@ def build_query(cube, B, payload_kind, rng):
             if len(held[ci]) < B:
                 held[ci].append(e)
 
-    # one forged edge.  It is hashed exactly like an honest edge (assumption A1),
-    # so the partition routes it to rho cells on its own -- we do not choose them.
+    truths = [any(all(e in held.get(ci, []) for e in motif) for motif in motifs)
+              for ci in range(K)]
+
+    # the forged item, hashed exactly like an honest edge (assumption A1): the
+    # partition routes it on its own -- we do not choose its cells.
     payload_cells = set()
     if PAYLOADS[payload_kind]:
         slot = cube.slots[0]
-        forged = (cyc[0], rng.choice(pool))
+        forged = shared if attack == "dup" else (anchor, rng.choice(pool))
         payload_cells = set(cube.place(forged, slot))
         for ci in payload_cells:
-            if len(held[ci]) < B:
+            if forged not in held[ci] and len(held[ci]) < B:
                 held[ci].append(forged)
 
-    truths, prompts = [], []
+    prompts = []
     for ci in range(K):
-        cell = held.get(ci, [])
-        truths.append(all(e in cell for e in motif))
         pay = PAYLOADS[payload_kind] if ci in payload_cells else ""
-        prompts.append(render(cell, k, "E0000", pay))
+        prompts.append(render(held.get(ci, []), k, anchor, pay))
 
-    diag = dict(P_det=float(any(truths)), n_firing=int(sum(truths)),
-                rho_observed=len(payload_cells), rho_predicted=cube.rho_of_slot(cube.slots[0]))
+    firing = {ci for ci in range(K) if truths[ci]}
+    diag = dict(P_det=float(any(truths)), n_firing=len(firing),
+                rho_observed=len(payload_cells), rho_predicted=cube.rho_of_slot(cube.slots[0]),
+                payload_hits_firing=len(payload_cells & firing))
     return prompts, truths, sorted(payload_cells), diag
 
 
@@ -350,6 +376,124 @@ class HFVerdict:
             n = logits[:, self.no].max(dim=-1).values
             said += (y > n).tolist()
         return said
+
+
+class APIVerdict:
+    """OpenAI-compatible /v1/chat/completions backend.
+
+    For a model already served behind an HTTP endpoint (vLLM, SGLang, TGI, ...).
+    The CLIENT needs no GPU -- inference happens on the server -- so this runs
+    anywhere with network access and numpy/scipy.
+
+    The verdict is read from the generated text rather than the logits, which is
+    why PROMPT ends with "Answer with exactly one word: YES or NO".
+
+    Two failure modes are handled deliberately, because both would corrupt the
+    very quantity being measured (eps'):
+
+      * A transport error is retried with exponential backoff and, if it still
+        fails, RAISES.  A fabricated verdict would silently inflate eps'.
+      * A reply parsing as neither YES nor NO is counted as "did not confirm"
+        (False) and reported.  A cell that fails to say YES has not fired, so
+        False is the honest reading -- but if the unparsed rate is not tiny the
+        measurement is suspect, which is why it is printed.
+
+    Server-side determinism is not guaranteed even at temperature 0 (continuous
+    batching reorders reductions), so `seed` is sent but repeat runs may differ
+    slightly.  That is a property of the endpoint, not of this harness.
+    """
+
+    def __init__(self, base_url, model, api_key=None, concurrency=16, timeout=120.0,
+                 retries=5, max_tokens=512, seed=SEED, extra=None):
+        url = base_url.rstrip("/")
+        if not url.endswith("/chat/completions"):
+            url += "/chat/completions"
+        self.url, self.model, self.key = url, model, api_key
+        self.concurrency = max(1, int(concurrency))
+        self.timeout, self.retries = float(timeout), max(1, int(retries))
+        self.max_tokens, self.seed = int(max_tokens), seed
+        self.extra = dict(extra or {})     # e.g. chat_template_kwargs to disable thinking
+        self.n_calls = self.n_unparsed = self.n_retried = self.n_truncated = 0
+        self.samples = []                  # first few raw replies, for --probe
+        self._lock = threading.Lock()
+
+    def _post(self, prompt):
+        payload = {
+            "model": self.model,
+            "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": self.max_tokens,
+            "temperature": 0.0,
+            "seed": self.seed,
+        }
+        payload.update(self.extra)
+        body = json.dumps(payload).encode()
+        hdr = {"Content-Type": "application/json"}
+        if self.key:
+            hdr["Authorization"] = f"Bearer {self.key}"
+        req = urllib.request.Request(self.url, data=body, headers=hdr, method="POST")
+        with urllib.request.urlopen(req, timeout=self.timeout) as r:
+            return json.loads(r.read().decode())
+
+    @staticmethod
+    def _parse(text):
+        """LAST standalone YES/NO token.  -> True, False, or None if neither.
+
+        Last, not first: a reasoning model emits a preamble ("Thinking Process: ...",
+        or a <think> block) that routinely contains both words while deliberating.
+        The verdict is what it settles on, so the final occurrence is the answer.
+        Any <think>...</think> block is dropped first; an UNCLOSED one means the
+        reply was truncated before the model finished thinking, which is not a
+        verdict and must read as None rather than as whatever it mused about.
+        """
+        t = text or ""
+        t = re.sub(r"(?is)<think>.*?</think>", " ", t)
+        if re.search(r"(?i)<think>", t):          # opened and never closed: truncated
+            return None
+        out = None
+        for w in re.sub(r"[^A-Za-z ]", " ", t).upper().split():
+            if w == "YES":
+                out = True
+            elif w == "NO":
+                out = False
+        return out
+
+    def _one(self, prompt):
+        delay, last = 1.0, None
+        for _ in range(self.retries):
+            try:
+                d = self._post(prompt)
+                ch = d["choices"][0]
+                raw = ch["message"]["content"]
+                # A reply cut off at max_tokens never reached its verdict.  Parsing it
+                # would pick up a YES/NO from the middle of the reasoning, which is how
+                # a reasoning model silently turns into a constant classifier.
+                verdict = None if ch.get("finish_reason") == "length" else self._parse(raw)
+                if ch.get("finish_reason") == "length":
+                    with self._lock:
+                        self.n_truncated += 1
+                with self._lock:
+                    self.n_calls += 1
+                    self.n_unparsed += (verdict is None)
+                    if len(self.samples) < 8:             # keep a few for inspection
+                        self.samples.append(raw)
+                return bool(verdict)                      # None -> did not confirm
+            except urllib.error.HTTPError as e:
+                if e.code in (400, 401, 403, 404):        # config error; do not hammer
+                    raise RuntimeError(
+                        f"endpoint rejected the request ({e.code} {e.reason}). "
+                        f"Check --api-base, --api-model and the bearer token.") from e
+                last = e
+            except Exception as e:                        # transport / decode / shape
+                last = e
+            with self._lock:
+                self.n_retried += 1
+            time.sleep(delay + random.random() * 0.3)      # jitter; module RNG is unseeded
+            delay = min(delay * 2, 30.0)
+        raise RuntimeError(f"call failed after {self.retries} attempts: {last!r}")
+
+    def __call__(self, prompts, truths, payload_cells):
+        with ThreadPoolExecutor(max_workers=self.concurrency) as ex:
+            return list(ex.map(self._one, prompts))        # map preserves input order
 
 
 # ==========================================================================
@@ -442,14 +586,15 @@ def fee(K, kappa, eps, delta):
 # ==========================================================================
 # 5.  Sweep
 # ==========================================================================
-def run(verdict, Ks, ks, Bs, payloads, queries, delta, seed, verbose=True):
+def run(verdict, Ks, ks, Bs, payloads, queries, delta, seed, verbose=True,
+        n_wit=6, attack="dup"):
     rng = random.Random(seed)
     rows = []
     for K, k, B, pk in itertools.product(Ks, ks, Bs, payloads):
         cube = HyperCube(k, K, rng)
         recs, diags = [], []
         for qi in range(queries):
-            prompts, truths, pcs, diag = build_query(cube, B, pk, rng)
+            prompts, truths, pcs, diag = build_query(cube, B, pk, rng, n_wit=n_wit, attack=attack)
             said = verdict(prompts, truths, pcs)
             errs = [bool(s != t) for s, t in zip(said, truths)]
             recs.append(dict(errors=errs, truths=list(map(bool, truths)),
@@ -465,9 +610,11 @@ def run(verdict, Ks, ks, Bs, payloads, queries, delta, seed, verbose=True):
         f_free = fee(cube.K, min(cube.K, rho * 1), st["eps"], delta)   # m_s = 1 here
         rows.append(dict(
             K=cube.K, K_requested=K, k=k, B=B, payload=pk, queries=queries,
+            n_witnesses=n_wit, attack=attack,
             tau_star=cube.tau, rho=rho, rho_max=cube.rho_max, shares=cube.p,
             P_det_mean=float(np.mean([d["P_det"] for d in diags])),
             firing_mean=float(np.mean([d["n_firing"] for d in diags])),
+            payload_hits_firing_mean=float(np.mean([d["payload_hits_firing"] for d in diags])),
             rho_observed_mean=float(np.mean([d["rho_observed"] for d in diags])),
             fee_measured=f_meas, fee_independent=f_indep, fee_kappa_free=f_free,
             fee_ratio_measured_vs_free=f_meas / f_free if f_free else None,
@@ -495,25 +642,104 @@ def main():
                     help="per-cell load B, in edges")
     ap.add_argument("--cycle", type=int, default=4, help="motif is a k-cycle")
     ap.add_argument("--payloads", nargs="+", default=["none", "generic", "targeted"])
+    ap.add_argument("--witnesses", type=int, default=6,
+                    help="planted witnesses per query, all sharing the anchor's first "
+                         "edge; c_1 is about this number (must be >= 2 to measure kappa)")
+    ap.add_argument("--attack", choices=["dup", "fresh"], default="dup",
+                    help="dup: the payload rides a copy of the shared honest edge and "
+                         "reaches every firing cell; fresh: a new edge, cells by chance")
     ap.add_argument("--delta", type=float, default=0.01, help="certificate confidence")
     ap.add_argument("--dtype", default="bfloat16")
     ap.add_argument("--out", default=os.path.join(HERE, "results_llm.json"))
     ap.add_argument("--seed", type=int, default=SEED)
+    # served-model backend: no GPU needed on this machine
+    ap.add_argument("--api-base", default=None,
+                    help="OpenAI-compatible endpoint, e.g. http://HOST:8002/v1")
+    ap.add_argument("--api-model", default=None,
+                    help="model name the endpoint serves (e.g. qwen-122b)")
+    ap.add_argument("--api-key-env", default="LLM_API_KEY",
+                    help="env var holding the bearer token. Never pass a key on the "
+                         "command line: it lands in shell history and `ps`.")
+    ap.add_argument("--concurrency", type=int, default=16,
+                    help="parallel in-flight requests")
+    ap.add_argument("--timeout", type=float, default=120.0, help="per-request seconds")
+    ap.add_argument("--api-retries", type=int, default=5)
+    ap.add_argument("--api-max-tokens", type=int, default=512,
+                    help="reply budget. A reasoning model needs room to finish thinking "
+                         "AND state the verdict; too small and every reply is unparseable.")
+    ap.add_argument("--api-extra", default=None,
+                    help='extra JSON merged into the request body, e.g. '
+                         '\'{"chat_template_kwargs":{"enable_thinking":false}}\'')
+    ap.add_argument("--probe", type=int, default=0, metavar="N",
+                    help="send N prompts, print the raw replies and the parsed verdict, "
+                         "then exit. Run this before any long sweep.")
     a = ap.parse_args()
 
-    if a.dry_run or a.model is None:
+    api_base = None
+    if a.api_base:
+        model_label = a.api_model or a.model
+        if not model_label:
+            ap.error("--api-base requires --api-model")
+        key = os.environ.get(a.api_key_env)
+        if not key:
+            print(f"warning: ${a.api_key_env} is unset; sending no Authorization header",
+                  file=sys.stderr)
+        api_base = a.api_base
+        try:
+            extra = json.loads(a.api_extra) if a.api_extra else None
+        except json.JSONDecodeError as e:
+            ap.error(f"--api-extra is not valid JSON: {e}")
+        print(f"using served model {model_label!r} at {api_base} "
+              f"(concurrency {a.concurrency}); this machine needs no GPU", flush=True)
+        v = APIVerdict(api_base, model_label, api_key=key, concurrency=a.concurrency,
+                       timeout=a.timeout, retries=a.api_retries, seed=a.seed,
+                       max_tokens=a.api_max_tokens, extra=extra)
+        dry = False
+
+        if a.probe:
+            cube = HyperCube(a.cycle, a.cells[0], random.Random(a.seed))
+            prompts, truths, _pcs, _d = build_query(cube, a.loads[0], "none",
+                                                    random.Random(a.seed))
+            n = min(a.probe, len(prompts))
+            print(f"\n=== probing {n} prompts (max_tokens={a.api_max_tokens}) ===\n")
+            bad = 0
+            for i in range(n):
+                raw = v._post(prompts[i])["choices"][0]["message"]["content"]
+                got = v._parse(raw)
+                bad += got is None
+                print(f"--- reply {i + 1}  truth={truths[i]}  parsed={got}"
+                      f"{'   <-- UNPARSEABLE' if got is None else ''}")
+                print(repr(raw)[:700])
+                print()
+            print(f"{bad}/{n} unparseable.")
+            if bad:
+                print("Fix this before the sweep: raise --api-max-tokens, or disable "
+                      "thinking with\n  --api-extra "
+                      "'{\"chat_template_kwargs\":{\"enable_thinking\":false}}'",
+                      file=sys.stderr)
+            return
+    elif a.dry_run or a.model is None:
         print("[dry run] synthetic verdicts. Tests plumbing and estimators. NOT EVIDENCE.")
-        v = DryRun()
+        v, model_label, dry = DryRun(), a.model, True
     else:
         print(f"loading {a.model} on cuda:0 ...", flush=True)
         v = HFVerdict(a.model, batch=a.batch, dtype=a.dtype)
+        model_label, dry = a.model, False
         print("loaded.", flush=True)
 
-    rows = run(v, a.cells, [a.cycle], a.loads, a.payloads, a.queries, a.delta, a.seed)
+    rows = run(v, a.cells, [a.cycle], a.loads, a.payloads, a.queries, a.delta, a.seed,
+               n_wit=a.witnesses, attack=a.attack)
 
     by_pay = {p: max((r["kappa_var"] for r in rows if r["payload"] == p), default=1.0)
               for p in a.payloads}
-    res = dict(model=a.model, dry_run=bool(a.dry_run or a.model is None), seed=a.seed,
+    res = dict(model=model_label, dry_run=dry, seed=a.seed,
+               witnesses=a.witnesses, attack=a.attack,
+               api_base=api_base,          # endpoint only; the bearer token is never stored
+               api_extra=(json.loads(a.api_extra) if a.api_extra else None),
+               api_calls=getattr(v, "n_calls", None),
+               api_unparsed=getattr(v, "n_unparsed", None),
+               api_retried=getattr(v, "n_retried", None),
+               api_truncated=getattr(v, "n_truncated", None),
                delta=a.delta, queries=a.queries, rows=rows,
                kappa_max=max(r["kappa_var"] for r in rows),
                kappa_by_payload=by_pay,
@@ -524,6 +750,37 @@ def main():
                kappa_free_bound_respected=all(
                    r["kappa_var"] <= min(r["K"], r["rho"]) + 1e-9 for r in rows),
                P_det_always_1=all(r["P_det_mean"] == 1.0 for r in rows))
+
+    # ---- validity gate -------------------------------------------------------
+    # eps' and kappa only mean something if the cell verdict is actually a verdict.
+    # A reader that never fires on a cell holding the complete motif is a constant
+    # "NO", for which eps' collapses to the base rate 1/K and kappa has no error
+    # variance to detect.  That is not a measurement of reader noise, so say so
+    # loudly rather than letting the numbers be quoted.
+    fire_err = [r["eps_firing"] for r in rows if r["eps_firing"] is not None]
+    worst = max(fire_err) if fire_err else 0.0
+    res["reader_is_informative"] = bool(worst < 0.5)
+    res["max_eps_firing"] = float(worst)
+    # kappa is a statement about SEVERAL readers seeing ONE payload.  With one firing
+    # cell there is nothing to correlate and kappa clamps at 1 whatever the reader does.
+    res["min_firing_mean"] = float(min(r["firing_mean"] for r in rows))
+    res["min_payload_hits_firing"] = float(min(r["payload_hits_firing_mean"] for r in rows
+                                               if r["payload"] != "none") or [0.0])
+    res["kappa_is_measurable"] = bool(res["min_firing_mean"] >= 2.0 and
+                                      res["min_payload_hits_firing"] >= 2.0)
+    if not res["kappa_is_measurable"]:
+        print("\nWARNING: fewer than 2 firing cells, or the payload reaches fewer than 2 of "
+              "them, in some configuration; kappa there is a clamp, not a measurement. "
+              "Raise --witnesses or use --attack dup.", file=sys.stderr)
+    if not res["reader_is_informative"]:
+        print("\n" + "!" * 74, file=sys.stderr)
+        print("INVALID AS A MEASUREMENT: eps_firing = %.3f" % worst, file=sys.stderr)
+        print("The reader almost never confirms a cell that holds the complete motif, so", file=sys.stderr)
+        print("it is behaving as a constant NO.  eps' here is just the base rate 1/K and", file=sys.stderr)
+        print("kappa has no error variance to measure.  DO NOT report these as eps'/kappa.", file=sys.stderr)
+        print("Fix the reader first: enable thinking, raise --api-max-tokens, or simplify", file=sys.stderr)
+        print("the motif (--cycle 3) until eps_firing is well below 0.5.", file=sys.stderr)
+        print("!" * 74 + "\n", file=sys.stderr)
     with open(a.out, "w") as f:
         json.dump(res, f, indent=2, default=float)
 
@@ -540,8 +797,19 @@ def main():
               f"{r['fee_ratio_measured_vs_indep']:10.3f}")
     print(f"\nP_det = 1 in every configuration: {res['P_det_always_1']}   "
           f"(the partition is doing its job)")
+    print(f"firing cells per query (min over configs): {res['min_firing_mean']:.1f}; "
+          f"payload reaches (min): {res['min_payload_hits_firing']:.1f} of them; "
+          f"kappa measurable: {res['kappa_is_measurable']}")
     print(f"kappa by payload: { {k: round(v, 2) for k, v in by_pay.items()} }")
     print(f"eps'  by payload: { {k: round(v, 3) for k, v in res['eps_by_payload'].items()} }")
+    if isinstance(v, APIVerdict):
+        frac = v.n_unparsed / v.n_calls if v.n_calls else 0.0
+        print(f"api: {v.n_calls} calls, {v.n_retried} retried, "
+              f"{v.n_truncated} truncated, {v.n_unparsed} unparseable ({frac:.2%})")
+        if frac > 0.02:
+            print("WARNING: >2% of replies parsed as neither YES nor NO. They were counted "
+                  "as 'did not confirm', which inflates eps'. Inspect the endpoint's output "
+                  "format before reporting these numbers.", file=sys.stderr)
     print(f"kappa-free bound (kappa <= min(K, rho*m_s)) respected: "
           f"{res['kappa_free_bound_respected']}")
     print("independence tenable" if res["independence_tenable"]

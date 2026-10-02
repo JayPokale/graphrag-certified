@@ -20,3 +20,20 @@ GraphRAG_Mathematical_Proofs_and_Experiments_Updated_main2.md
 *.fls
 
 .DS_Store
+
+# large public inputs for kg_omega.py; fetch with experiments/data/fetch_data.sh
+experiments/data/*.txt
+experiments/data/*.tsv
+experiments/data/*.gz
+
+# end-to-end LLM response cache (may be large; regenerate with e2e_factiso.py)
+experiments/e2e_cache/
+# superseded first attempt at the end-to-end run (private endpoint details); see e2e_factiso.py
+experiments/e2e/
+
+# de-anonymised arXiv build and talk material: never part of the (anonymously mirrored) artifact
+paper-arxiv/
+*.pptx
+GraphRAG_Slide_Wise_Detailed_Explanation.md
+# large public data, fetched by experiments/data/fetch_data.sh
+experiments/data/*.json

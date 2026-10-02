@@ -112,141 +112,219 @@
       "query": "Q2",
       "kind": "tpch",
       "d": 5,
+      "anchor": [
+        "regionkey"
+      ],
       "tau_star": 3.0,
-      "nu": 3
+      "nu": 3,
+      "tau_star_unanchored": 3.0,
+      "nu_unanchored": 3
     },
     {
       "query": "Q3",
       "kind": "tpch",
       "d": 3,
+      "anchor": [],
       "tau_star": 2.0,
-      "nu": 2
+      "nu": 2,
+      "tau_star_unanchored": 2.0,
+      "nu_unanchored": 2
     },
     {
       "query": "Q4",
       "kind": "tpch",
       "d": 2,
+      "anchor": [],
       "tau_star": 1.0,
-      "nu": 1
+      "nu": 1,
+      "tau_star_unanchored": 1.0,
+      "nu_unanchored": 1
     },
     {
       "query": "Q5",
       "kind": "tpch",
       "d": 6,
+      "anchor": [
+        "regionkey"
+      ],
       "tau_star": 3.0,
-      "nu": 3
+      "nu": 3,
+      "tau_star_unanchored": 3.0,
+      "nu_unanchored": 3
     },
     {
       "query": "Q7",
       "kind": "tpch",
       "d": 5,
-      "tau_star": 2.0,
-      "nu": 2
+      "anchor": [
+        "nationkey"
+      ],
+      "tau_star": 3.0,
+      "nu": 3,
+      "tau_star_unanchored": 2.0,
+      "nu_unanchored": 2
     },
     {
       "query": "Q8",
       "kind": "tpch",
       "d": 7,
+      "anchor": [
+        "regionkey"
+      ],
       "tau_star": 4.0,
-      "nu": 4
+      "nu": 4,
+      "tau_star_unanchored": 4.0,
+      "nu_unanchored": 4
     },
     {
       "query": "Q9",
       "kind": "tpch",
       "d": 6,
+      "anchor": [],
       "tau_star": 3.0,
-      "nu": 3
+      "nu": 3,
+      "tau_star_unanchored": 3.0,
+      "nu_unanchored": 3
     },
     {
       "query": "Q10",
       "kind": "tpch",
       "d": 4,
+      "anchor": [],
       "tau_star": 2.0,
-      "nu": 2
+      "nu": 2,
+      "tau_star_unanchored": 2.0,
+      "nu_unanchored": 2
     },
     {
       "query": "Q11",
       "kind": "tpch",
       "d": 3,
+      "anchor": [
+        "nationkey"
+      ],
       "tau_star": 2.0,
-      "nu": 2
+      "nu": 2,
+      "tau_star_unanchored": 2.0,
+      "nu_unanchored": 2
     },
     {
       "query": "Q12",
       "kind": "tpch",
       "d": 2,
+      "anchor": [],
       "tau_star": 1.0,
-      "nu": 1
+      "nu": 1,
+      "tau_star_unanchored": 1.0,
+      "nu_unanchored": 1
     },
     {
       "query": "Q13",
       "kind": "tpch",
       "d": 2,
+      "anchor": [],
       "tau_star": 1.0,
-      "nu": 1
+      "nu": 1,
+      "tau_star_unanchored": 1.0,
+      "nu_unanchored": 1
     },
     {
       "query": "Q14",
       "kind": "tpch",
       "d": 2,
+      "anchor": [],
       "tau_star": 1.0,
-      "nu": 1
+      "nu": 1,
+      "tau_star_unanchored": 1.0,
+      "nu_unanchored": 1
     },
     {
       "query": "Q15",
       "kind": "tpch",
       "d": 2,
+      "anchor": [],
       "tau_star": 1.0,
-      "nu": 1
+      "nu": 1,
+      "tau_star_unanchored": 1.0,
+      "nu_unanchored": 1
     },
     {
       "query": "Q16",
       "kind": "tpch",
       "d": 3,
+      "anchor": [],
       "tau_star": 2.0,
-      "nu": 2
+      "nu": 2,
+      "tau_star_unanchored": 2.0,
+      "nu_unanchored": 2
     },
     {
       "query": "Q17",
       "kind": "tpch",
       "d": 2,
-      "tau_star": 1.0,
-      "nu": 1
+      "anchor": [
+        "partkey"
+      ],
+      "tau_star": 2.0,
+      "nu": 2,
+      "tau_star_unanchored": 1.0,
+      "nu_unanchored": 1
     },
     {
       "query": "Q18",
       "kind": "tpch",
       "d": 3,
+      "anchor": [],
       "tau_star": 2.0,
-      "nu": 2
+      "nu": 2,
+      "tau_star_unanchored": 2.0,
+      "nu_unanchored": 2
     },
     {
       "query": "Q19",
       "kind": "tpch",
       "d": 2,
-      "tau_star": 1.0,
-      "nu": 1
+      "anchor": [
+        "partkey"
+      ],
+      "tau_star": 2.0,
+      "nu": 2,
+      "tau_star_unanchored": 1.0,
+      "nu_unanchored": 1
     },
     {
       "query": "Q20",
       "kind": "tpch",
       "d": 5,
-      "tau_star": 2.0,
-      "nu": 2
+      "anchor": [
+        "nationkey"
+      ],
+      "tau_star": 3.0,
+      "nu": 3,
+      "tau_star_unanchored": 2.0,
+      "nu_unanchored": 2
     },
     {
       "query": "Q21",
       "kind": "tpch",
       "d": 4,
-      "tau_star": 2.0,
-      "nu": 2
+      "anchor": [
+        "nationkey"
+      ],
+      "tau_star": 3.0,
+      "nu": 3,
+      "tau_star_unanchored": 2.0,
+      "nu_unanchored": 2
     },
     {
       "query": "Q22",
       "kind": "tpch",
       "d": 2,
+      "anchor": [],
       "tau_star": 1.0,
-      "nu": 1
+      "nu": 1,
+      "tau_star_unanchored": 1.0,
+      "nu_unanchored": 1
     }
   ]
 }
